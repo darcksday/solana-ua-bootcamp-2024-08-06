@@ -1,0 +1,5 @@
+/node_modules/
+/practice-1/key-grinder/node_modules/
+/practice-1/key-grinder/package-lock.json
+.env
+.idea
