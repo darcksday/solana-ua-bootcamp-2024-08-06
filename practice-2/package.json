@@ -1,0 +1,22 @@
+{
+  "name": "solana-tests",
+  "version": "1.0.0",
+  "dependencies": {
+    "@metaplex-foundation/mpl-token-metadata": "^2.13.0",
+    "@solana-developers/helpers": "^2.3.0",
+    "@solana/spl-token": "^0.4.8",
+    "@solana/spl-token-metadata": "^0.1.4",
+    "@solana/web3.js": "^1.95.2",
+    "bs58": "^6.0.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@digitak/esrun": "^3.2.24",
+    "@types/node": "^20.5.7",
+    "esrun": "^3.2.26",
+    "prettier": "^3.0.3",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "type": "module"
+}
