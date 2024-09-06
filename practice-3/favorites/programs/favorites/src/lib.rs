@@ -34,7 +34,6 @@ pub struct SetFavorites<'info> {
     pub system_program: Program<'info, System>,
 }
 
-
 #[program]
 pub mod favorites {
     use super::*;
@@ -56,9 +55,6 @@ pub mod favorites {
             .set_inner(Favorites { number, color });
         Ok(())
     }
-
-
-
 }
 
 #[derive(Accounts)]
