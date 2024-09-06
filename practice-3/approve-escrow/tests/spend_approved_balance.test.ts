@@ -6,7 +6,7 @@ import {
     Connection,
     Keypair,
     LAMPORTS_PER_SOL,
-    PublicKey,
+    PublicKey, Signer,
     SystemProgram,
     Transaction,
     TransactionInstruction,
@@ -20,7 +20,7 @@ import {
     createMintToInstruction,
     getAssociatedTokenAddressSync,
     getMinimumBalanceForRentExemptMint, getAccount,
-    transferChecked, createTransferCheckedInstruction
+    transferChecked, createTransferCheckedInstruction,
 
 } from "@solana/spl-token";
 import {randomBytes} from "crypto";
@@ -346,13 +346,19 @@ describe("Enough Alice Balance", () => {
             createTransferCheckedInstruction(
                 aliceUsdcAccount, // from
                 usdcMint.publicKey, // mint
-                Keypair.generate().publicKey, // to
+                bobUsdcAccount, // to
                 alice.publicKey, // from's owner
                 5000, // amount
-                6 // decimals
+                6, // decimals
+                [],
+                TOKEN_PROGRAM
+
+
             )
+
         );
         await provider.sendAndConfirm(spendTx,[alice])
+
 
 
         const [offerAddress, _offerBump] = PublicKey.findProgramAddressSync(
@@ -363,7 +369,7 @@ describe("Enough Alice Balance", () => {
             ],
             program.programId
         );
-
+        console.log(await getTokenBalance(aliceUsdcAccount))
         // Verify state before the offer is taken.
 
         expect(await getTokenBalance(aliceUsdcAccount)).toEqual(new BN(5_000));
